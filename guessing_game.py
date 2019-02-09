@@ -34,25 +34,37 @@ def start_game():
     print(' \nWELCOME TO THE: Number Guessing Game\n')
     print('------------------------------------------\n')
 
-    number_to_guess = random.choice(range(1, 10))
+    attempts = 0
+    highscore = 11
+    startgame = True
 
     print('Number is between 1 and 10')
 
     while True:
 
-        #check if input is number
+        if startgame:
+            number_to_guess = random.choice(range(1, 10))
+            startgame = False
+
+            if highscore < 11:
+                print('Highscore is {}'.format(highscore))
+
+        # check if input is number
         try:
             guess = int(input('Guess the number:'))
         except:
             print('Only numbers are allowed!')
             continue
 
-        #check guess out of range
+        # check guess out of range
         if guess < 0 or guess > 10:
             print('The number is between 1 and 10. Try again!')
             continue
 
-        #check guess
+        # check guess
+
+        attempts += 1
+
         if guess < number_to_guess:
             print('''It's higher.''')
         elif guess > number_to_guess:
@@ -60,9 +72,13 @@ def start_game():
         else:
             print('You guessed the correct number! ({})'.format(number_to_guess))
 
-            #play again
+            # play again
             again = input('Whould you like to play again? y/n :')
             if again.lower() == 'y':
+                if highscore > attempts:
+                    highscore = attempts
+                attempts = 0
+                startgame = True
                 continue
             else:
                 break
