@@ -67,6 +67,7 @@ def start_game():
             print('''It's lower.''')
         else:
             print('You guessed the correct number! ({})'.format(number_to_guess))
+            print('It took you {} tries!'.format(attempts))
 
             # play again
             again = input('Whould you like to play again? y/n :')
@@ -79,6 +80,8 @@ def start_game():
                 startgame = True
                 continue
             else:
+                print('\nThank you for playing!')
+                print('------------------------------------------\n')
                 break
 
 
