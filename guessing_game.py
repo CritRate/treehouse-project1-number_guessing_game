@@ -35,7 +35,7 @@ def start_game():
     print('------------------------------------------\n')
 
     attempts = 0
-    highscore = 11
+    highscore = None
     startgame = True
 
     while True:
@@ -43,7 +43,7 @@ def start_game():
         if startgame:
             number_to_guess = random.choice(range(1, 11))
             startgame = False
-            if highscore < 11:
+            if highscore:
                 print('\nHighscore is {}.\n'.format(highscore))
 
         # check if input is number
@@ -54,7 +54,7 @@ def start_game():
             continue
 
         # check guess out of range
-        if guess < 0 or guess > 10:
+        if guess < 1 or guess > 10:
             print('The number is between 1 and 10. Try again!')
             continue
 
@@ -71,7 +71,9 @@ def start_game():
             # play again
             again = input('Whould you like to play again? y/n :')
             if again.lower() == 'y':
-                if highscore > attempts:
+                if highscore == None:
+                    highscore = attempts
+                elif highscore > attempts:
                     highscore = attempts
                 attempts = 0
                 startgame = True
