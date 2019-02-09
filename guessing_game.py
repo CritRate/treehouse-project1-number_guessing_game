@@ -38,19 +38,17 @@ def start_game():
     highscore = 11
     startgame = True
 
-    print('Number is between 1 and 10')
-
     while True:
 
         if startgame:
             number_to_guess = random.choice(range(1, 11))
             startgame = False
             if highscore < 11:
-                print('Highscore is {}'.format(highscore))
+                print('\nHighscore is {}.\n'.format(highscore))
 
         # check if input is number
         try:
-            guess = int(input('Guess the number:'))
+            guess = int(input('Guess the number between 1 and 10:'))
         except:
             print('Only numbers are allowed!')
             continue
