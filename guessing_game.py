@@ -43,9 +43,8 @@ def start_game():
     while True:
 
         if startgame:
-            number_to_guess = random.choice(range(1, 10))
+            number_to_guess = random.choice(range(1, 11))
             startgame = False
-
             if highscore < 11:
                 print('Highscore is {}'.format(highscore))
 
@@ -62,7 +61,6 @@ def start_game():
             continue
 
         # check guess
-
         attempts += 1
 
         if guess < number_to_guess:
